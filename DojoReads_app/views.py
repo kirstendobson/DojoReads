@@ -68,3 +68,11 @@ def add_book(request):
         "all_authors": Author.objects.all(),
     }
     return render(request, 'add_book.html', context)
+
+def create_book(request):
+    errors=Book.objects.book_validator(request.POST)
+    if len(errors):
+        for error in errors:
+            messages.error(request, errors[error])
+        return redirect('/books/add')
+    
