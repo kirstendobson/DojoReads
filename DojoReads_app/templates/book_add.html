@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Book and Review</title>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="header">
+            <div id="head_left">
+                <h1>Welcome, {{ current_user.username }}</h1>
+            </div>
+            <div id="head_right">
+                <a href="">Add Book and Review</a>
+                <a href="/logout">Logout</a>
+            </div>
+        </div>
+        <div>
+            <h1>Add a New Title and Review:</h1>
+            <form action="" method="POST">
+                {% csrf_token %}
+                <table>
+                    <tr>
+                        <td>Book Title:</td>
+                        <td><input type="text" name="title"></td>
+                    </tr>
+                    <tr>
+                        <td>Author:</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Choose from the list:</td>
+                        <td>
+                            {% for author in all_authors %}
+                            <select name="name">{{author.name}}</select>
+                            {% endfor %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Or add a new author:</td>
+                        <td><input type="text" name="author"></td>
+                    </tr>
+                </table>
+            </form>
+
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DojoReads</title>
+</head>
+<body>
+    <div id="wrapper">
+        <h1>Welcome!</h1>
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <div id="log_reg_main">
+            <div class="split">
+                <h1>Register</h1>
+                <form action="/create_user" method="POST">
+                    {% csrf_token %}
+                    <table>
+                        <tr>
+                            <td>Name:</td>
+                            <td><input type="text" name="name"></td>
+                        </tr>
+                        <tr>
+                            <td>Username:</td>
+                            <td><input type="text" name="username"></td>
+                        </tr>
+                        <tr>
+                            <td>Email:</td>
+                            <td><input type="email" name="email"></td>
+                        </tr>
+                        <tr>
+                            <td>Password:</td>
+                            <td><input type="password" name="pword"></td>
+                        </tr>
+                        <tr>
+                            <td>*Password should be at least 8 characters</td>
+                        </tr>
+                        <tr>
+                            <td>Confirm PW:</td>
+                            <td><input type="text" name="cnfrm_pword"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><input type="submit" value="Register"></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+            <div class="split">
+                <h1>Login</h1>
+                <form action="/login" method="POST">
+                    {% csrf_token %}
+                    <table>
+                        <tr>
+                            <td>Email:</td>
+                            <td><input type="email" name="login_email"></td>
+                        </tr>
+                        <tr>
+                            <td>Password:</td>
+                            <td><input type="password" name="login_pword"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><input type="submit" value="Login"></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
